@@ -1,2 +1,2 @@
-# litecoin.github-io
-i will get to this later...
+# litecoin.github.io
+my is-a.dev site
