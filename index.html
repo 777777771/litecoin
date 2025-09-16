@@ -3,10 +3,318 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>I Love Litecoin</title>
+  <title>XMR <3</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #000000;
+      color: #fff;
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeIn 1s forwards;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .glow {
+      text-shadow: 0 0 12px rgba(255, 192, 203, 0.8);
+      color: #ffffff;
+    }
+
+    /* Side text positioning */
+    .side-text {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      max-width: 350px;
+      line-height: 1.5;
+      font-weight: 500;
+      text-align: center;
+      text-shadow: 0 0 6px rgba(255, 192, 203, 0.8);
+      z-index: 10;
+    }
+
+    .left-text { left: 12px; }
+    .right-text { right: 12px; }
+
+    /* Top right terminal */
+    .top-terminal-img {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 10;
+      max-width: 400px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+    }
+
+    /* Main center container */
+    .main-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      z-index: 10;
+      position: relative;
+      margin-top: 80px; /* space from top */
+    }
+
+    /* Center image */
+    .center-image {
+      max-width: 300px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+      margin-top: 20px;
+    }
+
+    /* Volume slider */
+    .volume-slider {
+      color: #fff;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      margin-bottom: 20px;
+    }
+
+    .volume-slider input[type="range"] { width: 200px; }
+
+    /* Social icons */
+    .socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .socials img { width: 40px; height: 40px; border-radius: 6px; cursor: pointer; }
+
+    /* ASCII Matrix canvas */
+    #matrix {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      font-family: monospace;
+      font-size: 14px;
+      color: white;
+      opacity: 0.3;
+      filter: blur(3px);
+      pointer-events: none;
+    }
+
+    /* Music slideshow */
+    .slideshow-section {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 350px;
+      z-index: 10;
+      font-family: Arial, sans-serif;
+    }
+
+    .slideshow-container {
+      overflow: hidden;
+      width: 100%;
+      height: 350px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+      background-color: rgba(0,0,0,0.6);
+    }
+
+    .slideshow-track {
+      display: flex;
+      flex-direction: row;
+      width: max-content;
+      animation: scrollSlideshow 35s linear infinite;
+    }
+
+    .slide {
+      flex-shrink: 0;
+      width: 350px;
+      text-align: center;
+      color: #fff;
+      margin-right: 20px;
+    }
+
+    .slide img {
+      max-width: 100%;
+      max-height: 300px;
+      border-radius: 12px;
+      margin-bottom: 5px;
+    }
+
+    @keyframes scrollSlideshow {
+      0% { transform: translateX(350px); }
+      100% { transform: translateX(-100%); }
+    }
+  </style>
 </head>
-<body class="bg-gray-50 flex items-center justify-center min-h-screen">
-  <h1 class="text-4xl font-bold text-blue-600">i love litecoin...</h1>
+<body>
+  <!-- ASCII Matrix background -->
+  <canvas id="matrix"></canvas>
+
+  <!-- Top right Fastfetch terminal -->
+  <img src="https://pomf2.lain.la/f/6civq9uz.png" alt="Fastfetch Fedora Terminal" class="top-terminal-img">
+
+  <!-- Music slideshow -->
+  <div class="slideshow-section">
+    <h2 style="color:#fff; font-weight:bold; margin-bottom:10px;">
+      some of my favourite music:
+    </h2>
+    <div class="slideshow-container">
+      <div class="slideshow-track" id="slideshowTrack">
+        <div class="slide">
+          <img src="https://pomf2.lain.la/f/xjc5sfeh.png" alt="xaviersobased - and">
+          <p>xaviersobased - and</p>
+        </div>
+        <div class="slide">
+          <img src="https://pomf2.lain.la/f/j4taufme.png" alt="wifiskeleton - i fucking hate fiona gallagher">
+          <p>wifiskeleton - i fucking hate fiona gallagher</p>
+        </div>
+        <div class="slide">
+          <img src="https://pomf2.lain.la/f/1s9656ls.png" alt="wifiskeleton - the one where i say 1944!!">
+          <p>wifiskeleton - the one where i say 1944!!</p>
+        </div>
+        <div class="slide">
+          <img src="https://pomf2.lain.la/f/xrouguz2.png" alt="ksuuvi - savior">
+          <p>ksuuvi - savior</p>
+        </div>
+        <div class="slide">
+          <img src="https://pomf2.lain.la/f/nr96v46v.png" alt="xaviersobased - someone help">
+          <p>xaviersobased - someone help</p>
+        </div>
+        <div class="slide">
+          <img src="https://pomf2.lain.la/f/rptqtdlm.png" alt="kynlary - pull up on me">
+          <p>kynlary - pull up on me</p>
+        </div>
+        <div class="slide">
+          <img src="https://pomf2.lain.la/f/9t04bgly.png" alt="d0llywood1 - whose idea was this anyway">
+          <p>d0llywood1 - whose idea was this anyway</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main center content -->
+  <div class="main-container">
+    <div class="volume-slider">
+      <label for="volumeSlider" style="margin-right: 10px;">Volume:</label>
+      <input type="range" id="volumeSlider" min="0" max="100" value="100">
+    </div>
+    <img src="https://pomf2.lain.la/f/xca7y0tz.png" alt="Center Image" class="center-image">
+
+    <!-- Socials -->
+    <div class="socials">
+      <a href="https://discord.com/users/1210241745279787131" target="_blank">
+        <img src="https://pomf2.lain.la/f/grvd5x4e.webp" alt="Discord">
+      </a>
+      <a href="https://x.com/fuckluna7771" target="_blank">
+        <img src="https://pomf2.lain.la/f/gmbv513g.png" alt="Twitter">
+      </a>
+      <a href="https://www.instagram.com/snapstrafing/" target="_blank">
+        <img src="https://pomf2.lain.la/f/nxe9kv1a.png" alt="Instagram">
+      </a>
+      <a href="https://www.youtube.com/@lunahops" target="_blank">
+        <img src="https://pomf2.lain.la/f/6a01yzcb.webp" alt="YouTube">
+      </a>
+      <a href="https://whatpulse.org/xzr" target="_blank">
+        <img src="https://pomf2.lain.la/f/9504qkl5.png" alt="WhatPulse">
+      </a>
+    </div>
+  </div>
+
+  <!-- Left Side Text -->
+  <div class="side-text left-text fade-in">
+    <p class="text-xl font-bold mb-4">fun facts about me!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+    <ol class="list-decimal list-inside space-y-2">
+      <li>despite having about 700 hours on counter strike source, i only have 2 achievements... (all that time is exclusively bhopping)</li>
+      <li>i have 3000 hours on geometry dash because that was the only game i played back in 2022 and 2023</li>
+      <li>i use fedora linux (sorry, i had to mention it somewhere)</li>
+      <li>i tri-boot windows, mint and fedora but fedora is my main os</li>
+      <li>this is mostly html but also js and css</li>
+      <li>this is my first html type of thing so please don't bully me for this</li>
+    </ol>
+  </div>
+
+  <!-- Right Side Text -->
+  <div class="side-text right-text fade-in glow">
+    <p class="text-lg">
+      hello! i am luna, a 15 y/o (trans) girl who loves bhopping and occasionally making stupid things like this. i also live in the uk so that's not the best.
+    </p>
+    <p class="text-lg">
+      i am heavy on privacy and such, and i heavily dislike the online safety act.
+    </p>
+    <p class="text-lg">
+      i also find crypto intriguing due to the rates constantly rising and falling (i.e. i predict the future and invest when i think the time is right)
+    </p>
+  </div>
+
+  <!-- Background music -->
+  <audio id="bg-music" src="https://pomf2.lain.la/f/yuprc7v6.mp3" autoplay loop></audio>
+
+  <script>
+    // Volume slider functionality
+    const music = document.getElementById('bg-music');
+    const volumeSlider = document.getElementById('volumeSlider');
+    music.volume = volumeSlider.value / 100;
+    volumeSlider.addEventListener('input', () => {
+      music.volume = volumeSlider.value / 100;
+    });
+
+    // Scrolling page title
+    let titleText = "XMR <3 ";
+    function scrollTitle() {
+      titleText = titleText.substring(1) + titleText[0];
+      document.title = titleText;
+    }
+    setInterval(scrollTitle, 300);
+
+    // ASCII Matrix effect
+    const canvas = document.getElementById("matrix");
+    const ctx = canvas.getContext("2d");
+    let width = canvas.width = window.innerWidth;
+    let height = canvas.height = window.innerHeight;
+    const ascii = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()*&^%';
+    const transColors = ['#55CDFC', '#F5A9B8', '#FFFFFF', '#F5A9B8', '#55CDFC'];
+    const fontSize = 14;
+    const columns = Math.floor(width / fontSize);
+    const drops = Array(columns).fill(0);
+
+    function draw() {
+      ctx.fillStyle = "rgba(0,0,0,0.05)";
+      ctx.fillRect(0,0,width,height);
+      for(let i=0; i<columns; i++){
+        const char = ascii[Math.floor(Math.random() * ascii.length)];
+        const color = transColors[Math.floor(Math.random() * transColors.length)];
+        ctx.fillStyle = color;
+        ctx.fillText(char, i*fontSize, drops[i]*fontSize);
+        drops[i]++;
+        if(drops[i]*fontSize > height && Math.random() > 0.975){
+          drops[i] = 0;
+        }
+      }
+    }
+    ctx.font = fontSize + "px monospace";
+    setInterval(draw, 60);
+    window.addEventListener('resize', () => {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    });
+  </script>
 </body>
 </html>
