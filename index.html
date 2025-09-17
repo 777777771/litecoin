@@ -13,7 +13,6 @@
       overflow: hidden;
       background-color: #000000;
       color: #fff;
-      cursor: none;
     }
 
     .fade-in {
@@ -24,7 +23,10 @@
     }
 
     @keyframes fadeIn {
-      to { opacity: 1; transform: translateY(0); }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .glow {
@@ -32,56 +34,145 @@
       color: #ffffff;
     }
 
-    .side-text {
-      position: absolute;
-      max-width: 350px;
-      line-height: 1.5;
-      font-weight: 500;
-      text-align: center;
-      text-shadow: 0 0 6px rgba(255, 192, 203, 0.8);
-      z-index: 10;
-    }
-
-    .left-text { left: 12px; }
-    .right-text { right: 12px; }
-
+    /* Top terminal image */
     .top-terminal-img {
       position: absolute;
       top: 10px;
-      right: 10px;
+      right: 12px;
       z-index: 10;
       max-width: 400px;
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(255,255,255,0.3);
     }
 
+    /* Music slideshow */
+    .music-container {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 350px;
+      overflow: hidden;
+      z-index: 10;
+    }
+
+    .music-slider {
+      display: flex;
+      animation: scrollRightLeft 10s linear infinite;
+    }
+
+    .music-slide {
+      min-width: 350px;
+      text-align: center;
+      margin-right: 20px;
+    }
+
+    .music-slide img {
+      max-width: 350px;
+      max-height: 350px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .music-title {
+      color: #fff;
+      text-shadow: 0 0 6px rgba(255,192,203,0.8);
+      margin-top: 8px;
+    }
+
+    @keyframes scrollRightLeft {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Fun facts center left */
+    .fun-facts-below {
+      position: absolute;
+      top: 50%;
+      left: 12px;
+      transform: translateY(-50%);
+      max-width: 350px;
+      line-height: 1.5;
+      text-align: left;
+      z-index: 10;
+      color: #fff;
+      text-shadow: 0 0 6px rgba(255,192,203,0.8);
+    }
+
+    /* Main center content */
     .main-container {
       display: flex;
       flex-direction: column;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
-      width: 100%;
+      height: 100vh;
       z-index: 10;
       position: relative;
-      margin-top: 180px;
     }
 
+    /* Center image */
     .center-image {
       max-width: 300px;
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(255,255,255,0.3);
-      margin: 10px 0;
+      margin-top: 20px;
     }
 
+    /* Volume slider */
     .volume-slider {
       color: #fff;
       text-align: center;
       font-family: Arial, sans-serif;
-      margin-bottom: 10px;
     }
 
     .volume-slider input[type="range"] { width: 200px; }
 
+    /* Socials */
+    .socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+      justify-content: center;
+    }
+
+    .socials img { width: 32px; height: 32px; }
+
+    /* Side texts */
+    .side-text {
+      position: absolute;
+      max-width: 350px;
+      line-height: 1.5;
+      font-weight: 500;
+      text-align: left;
+      text-shadow: 0 0 6px rgba(255, 192, 203, 0.8);
+      z-index: 10;
+    }
+
+    .right-text {
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+    }
+
+    .left-text {
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+    }
+
+    /* Browser info text */
+    .browser-info {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #fff;
+      text-shadow: 0 0 6px rgba(255,192,203,0.8);
+      z-index: 10;
+    }
+
+    /* ASCII Matrix canvas */
     #matrix {
       position: fixed;
       top: 0;
@@ -91,121 +182,82 @@
       z-index: 0;
       font-family: monospace;
       font-size: 14px;
+      color: white;
       opacity: 0.3;
       filter: blur(3px);
       pointer-events: none;
     }
 
-    .slideshow-container {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      width: 350px;
-      height: 350px;
-      overflow: hidden;
-      z-index: 10;
-    }
-
-    .slideshow-inner {
-      display: flex;
-      flex-direction: row;
-      position: absolute;
-      white-space: nowrap;
-    }
-
-    .slide {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-right: 20px;
-    }
-
-    .slide img {
-      max-width: 256px;
-      max-height: 256px;
-      border-radius: 12px;
-      margin-bottom: 5px;
-    }
-
-    .slide-title {
-      color: #fff;
-      text-align: center;
-      font-weight: bold;
-      text-shadow: 0 0 8px #fff;
-      max-width: 350px;
-      word-wrap: break-word;
-    }
-
-    .socials {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    .socials img {
-      width: 32px;
-      height: 32px;
-    }
-
-    .browser-info {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-weight: bold;
-      font-size: 16px;
-      text-shadow: 0 0 8px #fff;
-      z-index: 10;
+    /* PC / Mobile detection */
+    @media (max-width: 768px) {
+      .top-terminal-img { right: auto; top: 10px; left: 50%; transform: translateX(-50%); }
+      .music-container { top: 100px; left: 50%; transform: translateX(-50%); }
+      .fun-facts-below { top: auto; left: auto; transform: none; }
+      .main-container { margin-top: 400px; }
+      .right-text { top: auto; right: 12px; }
     }
   </style>
 </head>
 <body>
   <canvas id="matrix"></canvas>
 
+  <!-- Terminal -->
   <img src="https://pomf2.lain.la/f/6civq9uz.png" alt="Fastfetch Fedora Terminal" class="top-terminal-img">
 
-  <div class="slideshow-container">
-    <div class="slide-title" style="margin-bottom:5px;">some of my favourite music:</div>
-    <div class="slideshow-inner" id="slideshow">
-      <div class="slide">
-        <img src="https://pomf2.lain.la/f/xjc5sfeh.png" alt="Xaviersobased">
-        <div class="slide-title">xaviersobased - and</div>
+  <!-- Music slideshow -->
+  <div class="music-container">
+    <div class="music-slider">
+      <div class="music-slide">
+        <img src="https://pomf2.lain.la/f/xjc5sfeh.png" alt="xaviersobased - and">
+        <div class="music-title">xaviersobased - and</div>
       </div>
-      <div class="slide">
-        <img src="https://pomf2.lain.la/f/j4taufme.png" alt="Wifiskeleton1">
-        <div class="slide-title">wifiskeleton - i fucking hate fiona gallagher</div>
+      <div class="music-slide">
+        <img src="https://pomf2.lain.la/f/j4taufme.png" alt="wifiskeleton - i fucking hate fiona gallagher">
+        <div class="music-title">wifiskeleton - i fucking hate fiona gallagher</div>
       </div>
-      <div class="slide">
-        <img src="https://pomf2.lain.la/f/1s9656ls.png" alt="Wifiskeleton2">
-        <div class="slide-title">wifiskeleton - the one where i say 1944!!</div>
+      <div class="music-slide">
+        <img src="https://pomf2.lain.la/f/1s9656ls.png" alt="wifiskeleton - the one where i say 1944!!">
+        <div class="music-title">wifiskeleton - the one where i say 1944!!</div>
       </div>
-      <div class="slide">
-        <img src="https://pomf2.lain.la/f/xrouguz2.png" alt="Ksuvi">
-        <div class="slide-title">ksuuvi - savior</div>
+      <div class="music-slide">
+        <img src="https://pomf2.lain.la/f/xrouguz2.png" alt="ksuuvi - savior">
+        <div class="music-title">ksuuvi - savior</div>
       </div>
-      <div class="slide">
-        <img src="https://pomf2.lain.la/f/nr96v46v.png" alt="Xaviersobased2">
-        <div class="slide-title">xaviersobased - someone help</div>
+      <div class="music-slide">
+        <img src="https://pomf2.lain.la/f/nr96v46v.png" alt="xaviersobased - someone help">
+        <div class="music-title">xaviersobased - someone help</div>
       </div>
-      <div class="slide">
-        <img src="https://pomf2.lain.la/f/rptqtdlm.png" alt="Kynlary">
-        <div class="slide-title">kynlary - pull up on me</div>
+      <div class="music-slide">
+        <img src="https://pomf2.lain.la/f/rptqtdlm.png" alt="kynlary - pull up on me">
+        <div class="music-title">kynlary - pull up on me</div>
       </div>
-      <div class="slide">
-        <img src="https://pomf2.lain.la/f/9t04bgly.png" alt="D0llywood1">
-        <div class="slide-title">d0llywood1 - whose idea was this anyway</div>
+      <div class="music-slide">
+        <img src="https://pomf2.lain.la/f/9t04bgly.png" alt="d0llywood1 - whose idea was this anyway">
+        <div class="music-title">d0llywood1 - whose idea was this anyway</div>
       </div>
     </div>
   </div>
 
+  <!-- Fun facts left -->
+  <div class="fun-facts-below fade-in">
+    <p class="text-xl font-bold mb-4">fun facts about me:</p>
+    <ol class="list-decimal list-inside space-y-2">
+      <li>despite having about 700 hours on counter strike source, i only have 2 achievements (all that time is exclusively bhopping).</li>
+      <li>i have 3000 hours on geometry dash because that was the only game i played back in 2022 and 2023.</li>
+      <li>i use fedora linux (sorry, i had to mention it somewhere).</li>
+      <li>i tri-boot windows, mint, and fedora but fedora is my main os.</li>
+      <li>this is mostly html, css, and js.</li>
+      <li>this is my first html project, so please don't bully me.</li>
+    </ol>
+  </div>
+
+  <!-- Main center content -->
   <div class="main-container">
     <div class="volume-slider">
       <label for="volumeSlider" style="margin-right: 10px;">Volume:</label>
       <input type="range" id="volumeSlider" min="0" max="100" value="100">
     </div>
     <img src="https://pomf2.lain.la/f/xca7y0tz.png" alt="Center Image" class="center-image">
-
     <div class="socials">
       <a href="https://discord.com/users/1210241745279787131"><img src="https://pomf2.lain.la/f/grvd5x4e.webp" alt="Discord"></a>
       <a href="https://x.com/fuckluna7771"><img src="https://pomf2.lain.la/f/gmbv513g.png" alt="Twitter"></a>
@@ -213,29 +265,27 @@
       <a href="https://www.youtube.com/@lunahops"><img src="https://pomf2.lain.la/f/6a01yzcb.webp" alt="YouTube"></a>
       <a href="https://whatpulse.org/xzr"><img src="https://pomf2.lain.la/f/9504qkl5.png" alt="WhatPulse"></a>
     </div>
-
-    <div class="side-text left-text fade-in glow" style="top:220px;">
-      <p class="text-xl font-bold mb-4">fun facts about me:</p>
-      <ol class="list-decimal list-inside space-y-2">
-        <li>despite having about 700 hours on counter strike source, i only have 2 achievements (all that time is exclusively bhopping).</li>
-        <li>i have 3000 hours on geometry dash because that was the only game i played back in 2022 and 2023.</li>
-        <li>i use fedora linux (sorry, i had to mention it somewhere).</li>
-        <li>i tri-boot windows, mint, and fedora but fedora is my main os.</li>
-        <li>this is mostly html, css, and js.</li>
-        <li>this is my first html project, so please don't bully me.</li>
-      </ol>
-    </div>
-
-    <div class="side-text right-text fade-in glow" style="top:220px;">
-      <p class="text-xl font-bold mb-4">me ^_^</p>
-      <p class="text-lg">hello! i am luna, a 15 y/o (trans) girl who loves bhopping and occasionally making stupid things like this. i also live in the uk so that's not the best.</p>
-      <p class="text-lg">i am heavy on privacy and such, and i heavily dislike the online safety act.</p>
-      <p class="text-lg">i also find crypto intriguing due to the rates constantly rising and falling (i.e. i predict the future and invest when i think the time is right)</p>
-      <p class="text-lg">i love bhopping, i average about 78 gain in cs and 92 gain in roblox.</p>
-    </div>
   </div>
 
-  <div class="browser-info" id="browserInfo"></div>
+  <!-- Personal info right -->
+  <div class="side-text right-text fade-in glow">
+    <p class="text-lg font-bold mb-2">me ^_^</p>
+    <p class="text-lg">
+      hello! i am luna, a 15 y/o (trans) girl who loves bhopping and occasionally making stupid things like this. i also live in the uk so that's not the best.
+    </p>
+    <p class="text-lg">
+      i am heavy on privacy and such, and i heavily dislike the online safety act.
+    </p>
+    <p class="text-lg">
+      i also find crypto intriguing due to the rates constantly rising and falling (i.e. i predict the future and invest when i think the time is right)
+    </p>
+    <p class="text-lg">
+      i LOVE bhopping, i average about 78 gain in cs and 92 gain in roblox.
+    </p>
+  </div>
+
+  <div class="browser-info glow" id="browserInfo"></div>
+
   <audio id="bg-music" src="https://pomf2.lain.la/f/yuprc7v6.mp3" autoplay loop></audio>
 
   <script>
@@ -244,60 +294,43 @@
     music.volume = volumeSlider.value / 100;
     volumeSlider.addEventListener('input', () => { music.volume = volumeSlider.value / 100; });
 
+    let titleText = "XMR <3 ";
+    function scrollTitle() { titleText = titleText.substring(1) + titleText[0]; document.title = titleText; }
+    setInterval(scrollTitle, 300);
+
     const canvas = document.getElementById("matrix");
     const ctx = canvas.getContext("2d");
     let width = canvas.width = window.innerWidth;
     let height = canvas.height = window.innerHeight;
-    const ascii = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%^&*()*&^%';
+    const ascii = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()';
     const transColors = ['#55CDFC', '#F5A9B8', '#FFFFFF', '#F5A9B8', '#55CDFC'];
     const fontSize = 14;
     const columns = Math.floor(width / fontSize);
     const drops = Array(columns).fill(0);
     ctx.font = fontSize + "px monospace";
-    function drawMatrix() {
+    function draw() {
       ctx.fillStyle = "rgba(0,0,0,0.05)";
       ctx.fillRect(0,0,width,height);
       for(let i=0;i<columns;i++){
         const char = ascii.charAt(Math.floor(Math.random()*ascii.length));
-        const color = transColors[Math.floor(Math.random()*transColors.length)];
-        ctx.fillStyle = color;
+        ctx.fillStyle = transColors[Math.floor(Math.random()*transColors.length)];
         ctx.fillText(char,i*fontSize,drops[i]*fontSize);
         drops[i]++;
-        if(drops[i]*fontSize > height && Math.random()>0.975) drops[i]=0;
+        if(drops[i]*fontSize > height && Math.random() > 0.975){ drops[i]=0; }
       }
     }
-    setInterval(drawMatrix,60);
-    window.addEventListener('resize',()=>{
-      width=canvas.width=window.innerWidth;
-      height=canvas.height=window.innerHeight;
-    });
+    setInterval(draw,60);
+    window.addEventListener('resize',()=>{ width=canvas.width=window.innerWidth; height=canvas.height=window.innerHeight; });
 
-    let titleText = "XMR <3 ";
-    function scrollTitle(){ titleText=titleText.substring(1)+titleText[0]; document.title=titleText; }
-    setInterval(scrollTitle,300);
-
-    const browserInfo = document.getElementById("browserInfo");
     const ua = navigator.userAgent.toLowerCase();
-    if(ua.includes("chrome")||ua.includes("edge")||ua.includes("brave")) {
-      browserInfo.textContent = "you should switch to firefox, it uses less resources";
-    } else if(ua.includes("firefox")||ua.includes("librewolf")||ua.includes("tor")) {
-      browserInfo.textContent = "wow, your browser is good!";
+    const info = document.getElementById("browserInfo");
+    if(ua.includes("chrome") || ua.includes("edg") || ua.includes("brave")){
+      info.textContent = "you should switch to firefox, it uses less resources";
+    } else if(ua.includes("firefox") || ua.includes("librewolf") || ua.includes("tor")){
+      info.textContent = "wow, your browser is good!";
     } else {
-      browserInfo.textContent = "enjoy browsing!";
+      info.textContent = "nice browser!";
     }
-
-    // Slideshow right-to-left continuous scroll
-    const slideshow = document.getElementById("slideshow");
-    let scrollPos = 0;
-    function slideScroll() {
-      scrollPos -= 1; // speed
-      if(Math.abs(scrollPos) >= slideshow.scrollWidth / 2) scrollPos = 0;
-      slideshow.style.transform = `translateX(${scrollPos}px)`;
-      requestAnimationFrame(slideScroll);
-    }
-    // Duplicate slides to loop seamlessly
-    slideshow.innerHTML += slideshow.innerHTML;
-    slideScroll();
   </script>
 </body>
 </html>
